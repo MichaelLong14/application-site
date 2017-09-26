@@ -2,13 +2,19 @@
 
 Simple website to view mock application data
 
+# Installation
+
+Install Node, Angular CLI globally.
+npm install
+ng serve
+
 # Technology
 
--Angular 4
--Angular Material2
--Sass
--Webpack
--Angular CLI (Project Seed)
+ * Angular 4
+ * Angular Material2
+ * Sass
+ * Webpack
+ * Angular CLI (Project Seed)
 
 # LocalStorage Note
 
