@@ -1,0 +1,4 @@
+//Temp fix for toolbar issue referenced here: https://github.com/angular/material2/pull/6661
+.toolbar-issue-fix .mat-toolbar-layout .mat-toolbar-row {
+    justify-content: space-between;
+}

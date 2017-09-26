@@ -1,0 +1,57 @@
+<div class="table-container mat-elevation-z8">
+  <div class="table-header">
+    <md-form-field floatPlaceholder="never">
+      <input mdInput #filter placeholder="Filter users">
+    </md-form-field>
+  </div>
+
+  <md-table #table [dataSource]="dataSource" mdSort>
+
+    <!-- Name Column -->
+    <ng-container mdColumnDef="name">
+      <md-header-cell *mdHeaderCellDef md-sort-header> Name </md-header-cell>
+      <md-cell *mdCellDef="let row"> {{row.name}} </md-cell>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container mdColumnDef="position">
+      <md-header-cell *mdHeaderCellDef md-sort-header> Position </md-header-cell>
+      <md-cell *mdCellDef="let row"> {{row.position}} </md-cell>
+    </ng-container>
+
+    <!-- Experience Column -->
+    <ng-container mdColumnDef="experience">
+      <md-header-cell *mdHeaderCellDef md-sort-header> Experience </md-header-cell>
+      <md-cell *mdCellDef="let row"> {{row.experience}} </md-cell>
+    </ng-container>
+
+    <!-- Applied Date Column -->
+    <ng-container mdColumnDef="applied">
+      <md-header-cell *mdHeaderCellDef md-sort-header> Application Date </md-header-cell>
+      <md-cell *mdCellDef="let row"> {{row.applied}} </md-cell>
+    </ng-container>
+
+    <!-- Info Column -->
+    <ng-container mdColumnDef="info">
+      <md-header-cell *mdHeaderCellDef md-sort-header> Details </md-header-cell>
+      <md-cell *mdCellDef="let row">
+        <button md-icon-button>
+          <md-icon class="md-24" (click)="infoClicked(row)" aria-label="info button">info outline</md-icon>
+        </button>
+      </md-cell>
+    </ng-container>
+    
+    <!-- Flag Column -->
+    <ng-container mdColumnDef="flag">
+      <md-header-cell *mdHeaderCellDef md-sort-header> Flag </md-header-cell>
+      <md-cell *mdCellDef="let row">
+        <button md-icon-button>
+          <md-icon class="md-24" (click)="flagClicked(row)" [ngClass]="{'flagged': row.flag}" aria-label="flag button">flag</md-icon>
+        </button>
+      </md-cell>
+    </ng-container>
+
+    <md-header-row *mdHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *mdRowDef="let row; columns: displayedColumns;"></md-row>
+  </md-table>
+</div>
