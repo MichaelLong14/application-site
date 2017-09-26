@@ -1,16 +1,21 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { MdSort, MdSnackBar } from '@angular/material';
+import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
+import { MdSort, MdSnackBar, MdDialog, MdPaginator } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { ApplicantDatabase } from 'app/data/applicant-database';
 import { ApplicantDataSource } from 'app/data/applicant-datasource';
 import { StorageService } from 'app/services/storage.service';
+import { ApplicantInfoComponent } from 'app/components/dialogs/applicant-info/applicant-info.component';
 
+/**
+ * Main table functionality including connecting to the live datasource
+ */
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TableComponent implements OnInit {
   displayedColumns = ['name', 'position', 'experience', 'applied', 'info', 'flag'];
@@ -20,11 +25,12 @@ export class TableComponent implements OnInit {
 
   @ViewChild(MdSort) sort: MdSort;
   @ViewChild('filter') filter: ElementRef;
+  @ViewChild(MdPaginator) paginator: MdPaginator;
 
-  constructor(public snackBar: MdSnackBar) { }
+  constructor(public snackBar: MdSnackBar, public dialog: MdDialog) { }
 
   ngOnInit() {
-    this.dataSource = new ApplicantDataSource(this.applicantDatabase, this.sort);
+    this.dataSource = new ApplicantDataSource(this.applicantDatabase, this.sort, this.paginator);
     Observable.fromEvent(this.filter.nativeElement, 'keyup')
       .debounceTime(150)
       .distinctUntilChanged()
@@ -57,13 +63,9 @@ export class TableComponent implements OnInit {
     this.openSnackBar(snackBarText);
   }
 
-  deleteClicked(row) {
-    //delete row from dataset
-
-    //localstorage
-  }
-
   infoClicked(row) {
-
+    let dialogRef = this.dialog.open(ApplicantInfoComponent, {
+      data: { applicantData: row }
+    });
   }
 }

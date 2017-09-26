@@ -11,6 +11,10 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
 
+/**
+ * In memory data management to retrieve data and bootstrap md-table process
+ */
+
 export class ApplicantDatabase {
     /** Stream that emits whenever the data has been modified. */
     dataChange: BehaviorSubject<Applicant[]> = new BehaviorSubject<Applicant[]>([]);

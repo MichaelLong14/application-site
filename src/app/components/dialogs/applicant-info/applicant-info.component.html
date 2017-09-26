@@ -1,0 +1,52 @@
+<md-list>
+    <h3 md-subheader>Personal Information</h3>
+    <md-list-item>
+        <h4 md-line class="info-row">
+            <div>Name:</div>
+            <div class="info-value">{{applicant.name}}</div>
+        </h4>
+    </md-list-item>
+    <md-list-item>
+        <h4 md-line class="info-row">
+            <div>Position:</div>
+            <div class="info-value">{{applicant.position}}</div>
+        </h4>
+    </md-list-item>
+    <md-list-item>
+        <h4 md-line class="info-row">
+            <div>Experience:</div>
+            <div class="info-value">{{applicant.experience}} Year(s)</div>
+        </h4>
+    </md-list-item>
+    <md-list-item>
+        <h4 md-line class="info-row">
+            <div>Application Date:</div>
+            <div class="info-value">{{applicant.applied | date}}</div>
+        </h4>
+    </md-list-item>
+    <md-divider></md-divider>
+    <h3 md-subheader>Availability</h3>
+    <div class="custom-table-container">
+        <table class="custom-material-table">
+            <thead>
+                <tr>
+                    <th *ngFor="let day of availabilityDays">{{day}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td *ngFor="let day of availabilityDays">{{applicant.availability[day]}}</td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    <md-divider></md-divider>
+    <h3 md-subheader>Questions</h3>
+    <md-list-item *ngFor="let question of applicant.questions">
+        <h4 md-line>{{question.text}}</h4>
+        <h2 md-line class="answer-text"> {{question.answer}} </h2>
+    </md-list-item>
+</md-list>
+<div md-dialog-actions>
+  <button md-button (click)="onNoClick()" color="primary" tabindex="0">Close</button>
+</div>

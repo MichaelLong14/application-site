@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * Handles interaction with the browser's LocalStorage to allow for flagging applicants
+ */
+
 @Injectable()
 export class StorageService {
   localStorageAvailable: boolean;
@@ -27,6 +31,7 @@ export class StorageService {
     return this.localStorageAvailable;
   }
 
+  //Add applicant's ID to the localStorage array for persistent flagging
   addFlag(id) {
     var currentFlagged = JSON.parse(localStorage.getItem('flagged'));
 
@@ -40,12 +45,14 @@ export class StorageService {
     }
   }
 
+  //Remove applicant's ID from the localStorage array
   removeFlag(id) {
     var currentFlagged = new Set(JSON.parse(localStorage.getItem('flagged')));
     currentFlagged.delete(id);
     localStorage.setItem('flagged', JSON.stringify(Array.from(currentFlagged)));
   }
 
+  //Get all currently flagged applicant ids
   getFlagged() {
     return JSON.parse(localStorage.getItem('flagged'));
   }

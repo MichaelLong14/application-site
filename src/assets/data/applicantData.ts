@@ -4,7 +4,7 @@ export const APPLICANTS: Applicant[] = [
     {
         "id": 0,
         "name": "Christian Pulisic",
-        "position": "Midfielder",
+        "position": "Midfield",
         "applied": "02/08/16",
         "experience": 1,
         "availability": {
@@ -64,7 +64,7 @@ export const APPLICANTS: Applicant[] = [
     {
         "id": 2,
         "name": "Michael Bradley",
-        "position": "Midfielder",
+        "position": "Midfield",
         "applied": "02/08/14",
         "experience": 1,
         "availability": {
@@ -124,7 +124,7 @@ export const APPLICANTS: Applicant[] = [
     {
         "id": 4,
         "name": "Tim Howard",
-        "position": "Goalkeeper",
+        "position": "Goalie",
         "applied": "02/08/12",
         "experience": 10,
         "availability": {
@@ -274,7 +274,7 @@ export const APPLICANTS: Applicant[] = [
     {
         "id": 9,
         "name": "Fabian Johnson",
-        "position": "Midfielder",
+        "position": "Midfield",
         "applied": "02/08/14",
         "experience": 5,
         "availability": {
